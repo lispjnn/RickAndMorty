@@ -26,7 +26,7 @@ This will launch the application in your browser at [http://localhost:3000](http
 ## Approach to the Problem
 ### Key Features
 - **Functional Components & Hooks:** Built entirely with functional components, employing React hooks (useState, useEffect, useMemo) for state management. 
-- **Data Fetching:** The application fetches data from the API across all available pages, consolidating character information into an array for infinite scrolling. Error handling and loading states enhance user experience and robustness.
+- **Data Fetching:** The application fetches data from the API across all available pages, consolidating character information into an array. Error handling and loading states enhance user experience and robustness.
 - **Filtering & Sorting:** Hooks manage updates to the displayed character list based on user selections. useMemo() is utilized to prevent unnecessary re-renders if filter/sort options aren't being updated.
 - **Skeleton Loading:** A skeleton loading animation provides visual feedback during data fetching.
 - **Modular & Styled Components:** Components, such as Card and Dropdown, are designed for reusability, consistent design, and consistent animations.
@@ -38,8 +38,7 @@ This will launch the application in your browser at [http://localhost:3000](http
     - **Grid:** Displays the character cards.
         - **Card:** Renders individual character details (name, species, status, gender, image, created date).
 ## Extras
-1. **Infinite Scroll**
-2. **Responsive Design**
+1. **Responsive Design**
    - Flexbox allows UI elements to adapt to various screen sizes
    - Hover effects for buttons and cards enhance interactivity
    - Updates to filter/sort options are displayed on the corresponding filter/sort tags
