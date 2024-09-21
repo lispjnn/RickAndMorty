@@ -7,7 +7,8 @@ export default function AvatarFeed() {
     const [avatarData, setAvatarData] = useState([]);
     const [filter, setFilter] = useState('Any');
     const [sort, setSort] = useState('Oldest');
-    const [error, setError] = useState(null); // Error state
+    const [error, setError] = useState(null); 
+    const [loading, setLoading] = useState(true); 
 
     // Fetch total pages 
     useEffect(() => {
@@ -19,10 +20,10 @@ export default function AvatarFeed() {
                 return res.json();
             })
             .then((data) => {
-                setTotalPages(data.info.pages);  // Set the total number of pages
+                setTotalPages(data.info.pages);  
             })
             .catch((err) => {
-                setError(err.message);  // Set error state
+                setError(err.message);  
             });
     }, []);
 
@@ -40,16 +41,18 @@ export default function AvatarFeed() {
                             return res.json();
                         })
                         .then((data) => {
-                            allCharacters = [...allCharacters, ...data.results];  // Merge results with existing character data
+                            allCharacters = [...allCharacters, ...data.results];  
                         });
                 }
-                setAvatarData(allCharacters);  // Update state after fetching all characters
+                setAvatarData(allCharacters);  
             } catch (err) {
-                setError(err.message);  // Set error state
+                setError(err.message);  
+            } finally {
+                setLoading(false);  
             }
         };
 
-        if (totalPages > 0) {  // Ensure totalPages is set before fetching characters
+        if (totalPages > 0) {  
             fetchCharacters();
         }
     }, [totalPages]);
@@ -104,9 +107,19 @@ export default function AvatarFeed() {
                 </div>
             </div>
 
-            {/* Display error message or filtered avatars */}
+            {/* Display loader, then render cards or an error message */}
             <div className="cardContainer">
-                {error ? (
+                {loading ? (
+                    <>
+                    {Array(10).fill().map((_, idx) => (
+                            <div key={idx} className="skeleton-card">
+                                <div className="skeleton-text"></div>
+                                <div className="skeleton-text"></div>
+                                <div className="skeleton-shimmer"></div>
+                            </div>
+                        ))}
+                    </>
+                ) : error ? (
                     <p className="error-message">{error}</p>
                 ) : filteredAvatars.length > 0 ? (
                     filteredAvatars.map((avatar) => (

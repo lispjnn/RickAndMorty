@@ -51,6 +51,47 @@ body {
   color: #555;
 }
 
+@keyframes shimmer {
+  0% {
+      background-position: -100% 0;
+  }
+  100% {
+      background-position: 100% 0;
+  }
+}
+
+.skeleton-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 300px;
+  height: 500px;
+  margin: 15px;
+  background: #ddd;
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.skeleton-text {
+  width: 80%;
+  height: 20px;
+  margin: 10px 0;
+  background-color: #ccc;
+}
+
+.skeleton-shimmer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0));
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
 .refineBar {
   display: flex;
   flex-direction: row;
