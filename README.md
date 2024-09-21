@@ -25,16 +25,16 @@ This will launch the application in your browser at [http://localhost:3000](http
 
 ## Approach to the Problem
 ### Key Features
-- **Functional Components & Hooks:** Built entirely with functional components, employing React hooks (useState, useEffect, useMemo) for state management and lifecycle methods. This avoids class-based components, promoting cleaner code. useMemo() optimizes performance by preventing unnecessary re-renders.
-- **Data Fetching:** The application fetches data from the API across all available pages, consolidating character information for efficient rendering. Error handling and loading states enhance user experience during data retrieval.
-- **Filtering & Sorting:** Dynamic filtering options by character status (Alive, Dead, Unknown, Any) and sorting by creation date (Oldest to Newest and vice versa) enable users to customize their view. Hooks manage updates to the displayed character list based on user selections.
-- **Skeleton Loading:** A skeleton loading animation provides visual feedback during data fetching, improving user engagement.
-- **Modular & Styled Components:** Components such as Card and Dropdown are designed for reusability, with CSS applied for a consistent visual aesthetic and smooth animations.
+- **Functional Components & Hooks:** Built entirely with functional components, employing React hooks (useState, useEffect, useMemo) for state management. 
+- **Data Fetching:** The application fetches data from the API across all available pages, consolidating character information into an array for infinite scrolling. Error handling and loading states enhance user experience and robustness.
+- **Filtering & Sorting:** Hooks manage updates to the displayed character list based on user selections. useMemo() is utilized to prevent unnecessary re-renders if filter/sort options aren't being updated.
+- **Skeleton Loading:** A skeleton loading animation provides visual feedback during data fetching.
+- **Modular & Styled Components:** Components, such as Card and Dropdown, are designed for reusability, consistent design, and consistent animations.
 
 ### Component Hierarchy
 - **App:** Displays logo, handles data fetching, manages loading/error states, implements filtering and sorting functionality.
     - **FilterSortBar:** Manages filter and sort menus.
-        - **Dropdown:** Reusable dropdown menu for filter/sort options.
+        - **Dropdown:** Dropdown menu for filter/sort options.
     - **Grid:** Displays the character cards.
         - **Card:** Renders individual character details (name, species, status, gender, image, created date).
 ## Extras
