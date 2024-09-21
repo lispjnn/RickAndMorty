@@ -1,11 +1,11 @@
 import AvatarFeed from './AvatarFeed.js';
 import './App.css';
-
+import Logo from './Rick-and-Morty-Logo.png';
 function App() {
   return (
     <>
       <center>
-        <h1>Rick and Morty Characters</h1>
+        <img src={Logo} className="logo"></img>
         <AvatarFeed/>
       </center>
     </>
