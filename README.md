@@ -11,7 +11,7 @@ This project showcases characters from the *Rick and Morty* API.
 
 1. **Clone the Repository**
    ```bash
-   git clone [repository-url]
+   git clone https://github.com/lispjnn/RickAndMorty.git
 2. **Open the Project -** Open the cloned folder in your preferred IDE.
 
 2. **Install Dependencies -** Open a terminal in the root of the project folder and run:
