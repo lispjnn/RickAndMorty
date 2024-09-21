@@ -37,9 +37,14 @@ This will launch the application in your browser at [http://localhost:3000](http
         - **Dropdown:** Dropdown menu for filter/sort options.
     - **Grid:** Displays the character cards.
         - **Card:** Renders individual character details (name, species, status, gender, image, created date).
+    - **Page:** Displays pagination controls. 
 ## Extras
 1. **Responsive Design**
    - Flexbox allows UI elements to adapt to various screen sizes
    - Hover effects for buttons and cards enhance interactivity
    - Updates to filter/sort options are displayed on the corresponding filter/sort tags
    - Custom loader
+2. **Pagination**
+   - Navigate to previous and next page
+   - Current page number is displayed between the prev/next buttons
+   - Additional buttons to skip to first/last pages
