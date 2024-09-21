@@ -1,70 +1,46 @@
-# Getting Started with Create React App
+# Rick and Morty Submission
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+### Running the Project
 
-In the project directory, you can run:
+After cloning the repository, open the folder in an IDE. Open a new terminal, ensuring it's navigated to the root of the project file. Type `npm i` to download the necessary library. Then, type `npm start` to run the app in your browser at [http://localhost:3000](http://localhost:3000).
 
-### `npm start`
+### My Approach to the Problem
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+#### Key Aspects
+- Functional Components & Hooks: The application is built using functional components and React hooks (useState, useEffect, useMemo) to manage state and handle data fetching, sorting, and filtering without relying on class-based components. useMemo() prevents unnecessary re-renders unless a filter/sort option changes from its current state. 
+- Fetching Data: The data is fetched from the API across all pages and consolidated into a single list of characters, allowing for an infinite scroll. Error handling and loading states ensure smooth UX.
+- Filtering & Sorting: Dropdown menus provide dynamic filtering of characters by status (Alive, Dead, Unknown, Any) and sorting by creation date (Oldest to Newest and vice versa). Hooks update the character list based on user selections.
+- Skeleton Loading: A skeleton loading animation gives feedback during the data-fetching process, enhancing the user experience.
+- Modular & Styled Components: Reusable components like AvatarCard are styled with CSS for consistent visual presentation, with cards displayed in a grid layout. Additional hover styles are applied to dropdowns and buttons for interactivity.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+#### More About My Component Heirarchy 
+1. App
+    - Renders the 'Rick and Morty' logo
+    - Fetches all relevant data from the API, rendering a custom loader until this data (or an error message) is fetched
+    - Implements filtering/sorting functionality using React hooks, displaying error messages if no characters are found for a particular query
+    - Child Components: 'Grid', 'GridLoader', and 'FilterSortBar'
 
-### `npm test`
+[Note: The components below are located in /src/components]
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. FilterSortBar
+    - Renders the filter/sort menus and tags
+    - Child Components: 'Dropdown'
+3. Grid
+    - Renders the grid, which arranges all the cards
+    - Child Components: 'Card' 
+4. Card
+    - Renders each individual character's information 
+        - name
+        - species
+        - status
+        - created
+        - gender
+        - image link
+5. Dropdown 
+    - Styles a dropdown menu that is reusable for both filter and sort functions
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+#### Extras Implemented
+1. Infinite Scroll
+2. Responsive Design: Hovering over buttons activates secondary color, and hovering over cards activates an animation. Changes to filter/sort options will be displayed on the corresponding filter/sort tags. Custom loader is displayed until all data is fetched and rendered.
