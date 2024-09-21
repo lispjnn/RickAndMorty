@@ -5,9 +5,8 @@ export default function AvatarFeed(){
     const [avatarData, setAvatarData] = useState([]);
     const [filter, setFilter] = useState('All');
     const [sort, setSort] = useState('Oldest');
-    // Fetch total pages and character data
+    // Fetch total pages 
     useEffect(() => {
-        // Fetch total number of pages
         fetch('https://rickandmortyapi.com/api/character')
         .then((res) => res.json())
         .then((data) => {
@@ -17,10 +16,9 @@ export default function AvatarFeed(){
 
     // Fetch characters from all pages
     useEffect(() => {
-        // Use a function to fetch data page by page
         const fetchCharacters = async () => {
             let allCharacters = [];
-            for (let i = 1; i <= totalPages; i++) {  // Fetch data for each page (page numbers start from 1)
+            for (let i = 1; i <= totalPages; i++) {
                 await fetch(`https://rickandmortyapi.com/api/character?page=${i}`)
                 .then((res) => res.json())
                 .then((data) => {
@@ -33,8 +31,10 @@ export default function AvatarFeed(){
         if (totalPages > 0) {  // Ensure totalPages is set before fetching characters
             fetchCharacters();
         }
+
     }, [totalPages]);
 
+    // Sorts avatars either Oldest-Newest or Newest-Oldest
     const sortedAvatars = avatarData.sort((a, b) => {
         const dateA = new Date(a.created);
         const dateB = new Date(b.created);
@@ -44,6 +44,7 @@ export default function AvatarFeed(){
         return dateB - dateA;
     })
 
+    // Filters avatars based on selected status filter
     const filteredAvatars = sortedAvatars.filter((avatar) => {
         if(filter === 'All') return true;
         return avatar.status === filter;
