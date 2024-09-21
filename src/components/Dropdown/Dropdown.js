@@ -1,5 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './Dropdown.css';
+
 export default function Dropdown({ state, setState, options, icon }){
     return (
         <div className="dropdown">
@@ -17,3 +19,9 @@ export default function Dropdown({ state, setState, options, icon }){
     )
 }
 
+Dropdown.propTypes = {
+    state: PropTypes.string.isRequired, 
+    setState: PropTypes.func.isRequired, 
+    options: PropTypes.arrayOf(PropTypes.string).isRequired,
+    icon: PropTypes.string.isRequired,
+};

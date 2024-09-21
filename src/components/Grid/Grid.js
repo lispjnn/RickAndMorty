@@ -1,5 +1,6 @@
 import Card from "../Card/Card";
 import './Grid.css';
+
 export default function Grid({ avatars }) {
     return (
         <div className="grid">

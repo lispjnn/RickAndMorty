@@ -1,4 +1,5 @@
 import Dropdown from "../Dropdown/Dropdown";
+import PropTypes from 'prop-types';
 import './FilterSortBar.css';
 export default function FilterSortBar({ filter, setFilter, sort, setSort }) {
     return(
@@ -14,3 +15,10 @@ export default function FilterSortBar({ filter, setFilter, sort, setSort }) {
         </div>
     )
 }
+
+FilterSortBar.propTypes = {
+    filter: PropTypes.string.isRequired, 
+    setFilter: PropTypes.func.isRequired, 
+    sort: PropTypes.string.isRequired,
+    setSort: PropTypes.func.isRequired,
+};
