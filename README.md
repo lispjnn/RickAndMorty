@@ -3,7 +3,7 @@
 This project showcases characters from the *Rick and Morty* API.
 
 ## Getting Started
-
+You can check out my deployment at: [https://rick-and-morty-hazel-omega.vercel.app/](https://rick-and-morty-hazel-omega.vercel.app/), or follow the steps below!
 ### Prerequisites
 - Node.js installed on your machine.
 
