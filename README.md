@@ -13,7 +13,7 @@ After cloning the repository, open the folder in an IDE. Open a new terminal, en
 - Fetching Data: The data is fetched from the API across all pages and consolidated into a single list of characters, allowing for an infinite scroll. Error handling and loading states ensure smooth UX.
 - Filtering & Sorting: Dropdown menus provide dynamic filtering of characters by status (Alive, Dead, Unknown, Any) and sorting by creation date (Oldest to Newest and vice versa). Hooks update the character list based on user selections.
 - Skeleton Loading: A skeleton loading animation gives feedback during the data-fetching process, enhancing the user experience.
-- Modular & Styled Components: Reusable components like AvatarCard are styled with CSS for consistent visual presentation, with cards displayed in a grid layout. Additional hover styles are applied to dropdowns and buttons for interactivity.
+- Modular & Styled Components: Reusable components, like Card and Dropdown, are styled with CSS for consistent visual presentation and animations. 
 
 #### More About My Component Heirarchy 
 1. App
