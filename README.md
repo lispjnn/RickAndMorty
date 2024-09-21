@@ -1,6 +1,6 @@
-# Rick and Morty Character Feed
+# Rick and Morty Submission
 
-This project showcases a character feed from the *Rick and Morty* API, utilizing React for a dynamic user experience.
+This project showcases characters from the *Rick and Morty* API.
 
 ## Getting Started
 
