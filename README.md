@@ -4,7 +4,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ### Running the Project
 
-After cloning the repository, open the folder in an IDE. Open a new terminal, ensuring it's navigated to the root of the project file. Type `npm i` to download the necessary library. Then, type `npm start` to run the app in your browser at [http://localhost:3000](http://localhost:3000).
+After cloning the repository, open the folder in an IDE. Open a new terminal, ensuring it's navigated to the root of the project file. Type `npm i` to download the necessary libraries. Then, type `npm start` to run the app in your browser at [http://localhost:3000](http://localhost:3000).
 
 ### My Approach to the Problem
 
