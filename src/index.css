@@ -132,6 +132,7 @@ body {
   height: 200px;
   padding-top: 30px;
 }
+
 p {
   font-size: 18px;
   text-align: center;
@@ -151,4 +152,11 @@ h1 {
   text-align: center;
   color: black;
   padding-top: 15px;
+}
+
+.error-message {
+  color: red;
+  font-size: 18px;
+  text-align: center;
+  margin-top: 20px;
 }

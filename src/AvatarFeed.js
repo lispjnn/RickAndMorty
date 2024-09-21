@@ -7,13 +7,22 @@ export default function AvatarFeed() {
     const [avatarData, setAvatarData] = useState([]);
     const [filter, setFilter] = useState('Any');
     const [sort, setSort] = useState('Oldest');
+    const [error, setError] = useState(null); // Error state
 
     // Fetch total pages 
     useEffect(() => {
         fetch('https://rickandmortyapi.com/api/character')
-            .then((res) => res.json())
+            .then((res) => {
+                if (!res.ok) {
+                    throw new Error("Failed to fetch total pages");
+                }
+                return res.json();
+            })
             .then((data) => {
                 setTotalPages(data.info.pages);  // Set the total number of pages
+            })
+            .catch((err) => {
+                setError(err.message);  // Set error state
             });
     }, []);
 
@@ -21,14 +30,23 @@ export default function AvatarFeed() {
     useEffect(() => {
         const fetchCharacters = async () => {
             let allCharacters = [];
-            for (let i = 1; i <= totalPages; i++) {
-                await fetch(`https://rickandmortyapi.com/api/character?page=${i}`)
-                    .then((res) => res.json())
-                    .then((data) => {
-                        allCharacters = [...allCharacters, ...data.results];  // Merge results with existing character data
-                    });
+            try {
+                for (let i = 1; i <= totalPages; i++) {
+                    await fetch(`https://rickandmortyapi.com/api/character?page=${i}`)
+                        .then((res) => {
+                            if (!res.ok) {
+                                throw new Error(`Failed to fetch page ${i}`);
+                            }
+                            return res.json();
+                        })
+                        .then((data) => {
+                            allCharacters = [...allCharacters, ...data.results];  // Merge results with existing character data
+                        });
+                }
+                setAvatarData(allCharacters);  // Update state after fetching all characters
+            } catch (err) {
+                setError(err.message);  // Set error state
             }
-            setAvatarData(allCharacters);  // Update state after fetching all characters
         };
 
         if (totalPages > 0) {  // Ensure totalPages is set before fetching characters
@@ -54,8 +72,10 @@ export default function AvatarFeed() {
 
     return (
         <div>
-            <div className="refineBar">
+            {/* Show error message if there's an error */}
+            {error && <p className="error-message">{error}</p>}
 
+            <div className="refineBar">
                 {/* Filter dropdown menu */}
                 <div className="dropdown">
                     <button className="dropdownButton">
@@ -79,14 +99,14 @@ export default function AvatarFeed() {
                         <div onClick={() => setSort('Oldest')}>Oldest to Newest</div>
                     </div>
                 </div>
-                
+
                 {/* Display current filter and sort */}
                 <div className="current-selections">
                     <span className="tag">Status: {filter}</span>
                     <span className="tag">Sort by: {sort}</span>
                 </div>
             </div>
-            
+
             {/* Display cards */}
             <div className="cardContainer">
                 {filteredAvatars.length > 0 ? (
