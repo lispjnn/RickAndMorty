@@ -14,7 +14,7 @@ export default function AvatarFeed() {
         fetch('https://rickandmortyapi.com/api/character')
             .then((res) => {
                 if (!res.ok) {
-                    throw new Error("Failed to fetch total pages");
+                    throw new Error("Failed to fetch characters");
                 }
                 return res.json();
             })
@@ -35,7 +35,7 @@ export default function AvatarFeed() {
                     await fetch(`https://rickandmortyapi.com/api/character?page=${i}`)
                         .then((res) => {
                             if (!res.ok) {
-                                throw new Error(`Failed to fetch page ${i}`);
+                                throw new Error(`Failed to fetch characters`);
                             }
                             return res.json();
                         })
@@ -72,9 +72,6 @@ export default function AvatarFeed() {
 
     return (
         <div>
-            {/* Show error message if there's an error */}
-            {error && <p className="error-message">{error}</p>}
-
             <div className="refineBar">
                 {/* Filter dropdown menu */}
                 <div className="dropdown">
@@ -100,16 +97,18 @@ export default function AvatarFeed() {
                     </div>
                 </div>
 
-                {/* Display current filter and sort */}
+                {/* Display current filter and sort tags */}
                 <div className="current-selections">
                     <span className="tag">Status: {filter}</span>
                     <span className="tag">Sort by: {sort}</span>
                 </div>
             </div>
 
-            {/* Display cards */}
+            {/* Display error message or filtered avatars */}
             <div className="cardContainer">
-                {filteredAvatars.length > 0 ? (
+                {error ? (
+                    <p className="error-message">{error}</p>
+                ) : filteredAvatars.length > 0 ? (
                     filteredAvatars.map((avatar) => (
                         <AvatarCard
                             key={avatar.id}
