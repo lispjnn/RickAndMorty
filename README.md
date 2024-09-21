@@ -41,6 +41,6 @@ After cloning the repository, open the folder in an IDE. Open a new terminal, en
 5. Dropdown 
     - Styles a dropdown menu that is reusable for both filter and sort functions
 
-#### Extras Implemented
+### Extras Implemented
 1. Infinite Scroll
 2. Responsive Design: Hovering over buttons activates secondary color, and hovering over cards activates an animation. Changes to filter/sort options will be displayed on the corresponding filter/sort tags. Custom loader is displayed until all data is fetched and rendered.
